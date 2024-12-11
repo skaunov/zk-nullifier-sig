@@ -6,12 +6,19 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rand_core = "0.6.3"
-hex-literal = "0.3.4"
-hash2field = "0.4.0"
-num-bigint = "0.4.3"
-num-integer = "0.1.45"
-k256 = {version = "0.13.2", features = ["arithmetic", "hash2curve", "expose-field", "sha2"]}
+rand_core = "~0.6.3"
+# hash2field = "0.4.0"
+num-bigint = "~0.4.3"
+num-integer = "~0.1.45"
+k256 = {version = "~0.13.3", features = ["arithmetic", "hash2curve", "expose-field", "sha2"]}
+signature = "^2.2.0"
+serde = { version = "^1.0.0", features = ["derive"], optional = true }
+pse-poseidon = { git = "https://github.com/shreyas-londhe/pse-poseidon.git" }
+halo2curves = "0.6.1"
+halo2curves-axiom = "0.5.3"
 
 [dev-dependencies]
 hex = "0.4.3"
+halo2-plume = { path = "../circuits/halo2" }
+halo2-ecc = { git = "https://github.com/shreyas-londhe/halo2-lib.git", branch = "feat/secp256k1-hash2curve-poseidon", default-features = false, features = ["halo2-axiom"] }
+halo2-base = { git = "https://github.com/shreyas-londhe/halo2-lib.git", branch = "feat/secp256k1-hash2curve-poseidon", default-features = false, features = ["halo2-axiom", "test-utils"] }
